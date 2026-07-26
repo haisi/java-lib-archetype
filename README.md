@@ -1,5 +1,8 @@
 # java-lib-archetype
 
+[![CI](https://github.com/haisi/java-lib-archetype/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/haisi/java-lib-archetype/actions/workflows/ci.yml)
+[![Maven Central](https://img.shields.io/maven-central/v/li.selman/java-lib-archetype.svg)](https://central.sonatype.com/artifact/li.selman/java-lib-archetype)
+
 A Maven archetype that scaffolds a Java library set up to publish to Maven Central: Error Prone/NullAway,
 Spotless (palantir-java-format), Checkstyle, a 100% JaCoCo coverage gate, GitHub Actions CI/release/Pages
 workflows, JReleaser, and the usual community-health files (CONTRIBUTING, CODE_OF_CONDUCT, SECURITY, issue/PR
@@ -65,6 +68,22 @@ A few things `archetype:generate` can't do for you:
 - **GPG keys and Central Portal credentials** (for `dryrun-release.sh` / real releases) are not part of the
   archetype and are never templated in — set those up per the target repo's own process.
 - **`git init` and the initial commit** are up to you; `archetype:generate` doesn't touch git.
+
+## Releasing this archetype itself
+
+This repo publishes to Maven Central the same way projects generated from it do: `release.yml` fires on a
+`vX.Y.Z` tag push, stages the build with `mvn deploy`, and hands off to JReleaser (`jreleaser.yml`) for
+signing and the Central Portal deploy. Two differences from a generated project's own release flow, both
+because this project has no Java source of its own (only the Velocity templates under
+`src/main/resources`): no javadoc jar is attached (nothing to document), and the sources jar
+(`maven-source-plugin`, `<excludeResources>false</excludeResources>` in `pom.xml`) bundles
+`src/main/resources` instead of `src/main/java`.
+
+```shell
+./bumpPomVersion.sh
+git push
+./release.sh
+```
 
 ## Developing this archetype
 

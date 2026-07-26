@@ -1,0 +1,41 @@
+project:
+  name: java-lib-archetype
+  description: Maven archetype for a Java library set up to publish to Maven Central
+  longDescription: |
+    java-lib-archetype scaffolds a Java library set up to publish to Maven Central: Error Prone/NullAway,
+    Spotless, Checkstyle, a 100% JaCoCo coverage gate, GitHub Actions CI/release/Pages workflows, JReleaser,
+    and the usual community-health files - the reusable scaffolding behind li.selman:null-markeder.
+  links:
+    homepage: https://github.com/haisi/java-lib-archetype
+  authors:
+    - Hasan Selman Kara
+  license: Apache-2.0
+  inceptionYear: "2026"
+  languages:
+    java:
+      groupId: li.selman
+      version: "25"
+
+release:
+  github:
+    owner: haisi
+    name: java-lib-archetype
+    overwrite: true
+    changelog:
+      formatted: ALWAYS
+      preset: conventional-commits
+
+signing:
+  active: ALWAYS
+  pgp:
+    armored: true
+
+deploy:
+  maven:
+    mavenCentral:
+      sonatype:
+        active: ALWAYS
+        url: https://central.sonatype.com/api/v1/publisher
+        stagingRepositories:
+          - target/staging-deploy
+        applyMavenCentralRules: true

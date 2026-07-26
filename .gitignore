@@ -6,3 +6,7 @@ target/
 .DS_Store
 .mvn/timing.properties
 .mvn/wrapper/maven-wrapper.jar
+out/
+.env
+private.asc
+public.asc
