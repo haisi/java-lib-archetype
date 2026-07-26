@@ -1,0 +1,27 @@
+version: 2
+updates:
+  # This repo's own build tooling (maven-archetype-plugin, maven-source-plugin, ...).
+  - package-ecosystem: "maven"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+
+  # This repo's own CI/release workflows (actions/checkout, jreleaser/release-action, ...).
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+
+  # Dependency/plugin versions (archunit, assertj, junit, error-prone, nullaway, jspecify,
+  # null-markeder, checkstyle, spotless, jacoco, ...) baked into every project generated
+  # from this archetype - keeps what gets stamped out from going stale.
+  - package-ecosystem: "maven"
+    directory: "/src/main/resources/archetype-resources"
+    schedule:
+      interval: "weekly"
+
+  # Actions used by the CI/release/Pages workflows templated into every generated project.
+  - package-ecosystem: "github-actions"
+    directory: "/src/main/resources/archetype-resources"
+    schedule:
+      interval: "weekly"
