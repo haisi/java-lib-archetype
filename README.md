@@ -67,6 +67,10 @@ A few things `archetype:generate` can't do for you:
 - **`docs/index.html`** ships with placeholder "The problem" / "What it does" copy — replace it with your
   library's actual pitch before enabling GitHub Pages.
 - **`README.md`**'s Usage section is a bare dependency snippet — flesh it out once the library has an API.
+- **`src/main/java/Placeholder.java`** (and `PlaceholderTest`) exist only so the freshly generated project
+  builds, tests and documents successfully before you've written any real code — `javadoc:jar` fails outright
+  on a package containing only `package-info.java` and no actual class, regardless of `failOnError`. Delete
+  both once the library has its own public API.
 - **GPG keys and Central Portal credentials** (for `dryrun-release.sh` / real releases) are not part of the
   archetype and are never templated in — set those up per the target repo's own process.
 - **`git init` and the initial commit** are up to you; `archetype:generate` doesn't touch git.

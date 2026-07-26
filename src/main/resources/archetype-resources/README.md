@@ -11,7 +11,8 @@ ${libraryDescription}
 
 [**Website**](https://${githubOwner}.github.io/${githubRepo}/)
 
-<!-- TODO: replace this with your library's actual usage instructions. -->
+<!-- TODO: replace this with your library's actual usage instructions, and delete src/main/java/Placeholder.java
+     and its test - they only exist so this freshly generated project builds and documents out of the box. -->
 
 ## Usage
 
