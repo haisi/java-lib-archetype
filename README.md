@@ -58,12 +58,12 @@ mvn archetype:generate \
 A few things `archetype:generate` can't do for you:
 
 - **Executable bits are lost.** `mvnw`, `bumpPomVersion.sh`, `setPomVersions.sh`, `release.sh`,
-  `dryrun-release.sh` and the two `.github/scripts/*.sh` helpers come out non-executable. Run:
+  `dryrun-release.sh` and the three `.github/scripts/*.sh` helpers come out non-executable. Run:
   ```shell
   chmod +x mvnw bumpPomVersion.sh setPomVersions.sh release.sh dryrun-release.sh .github/scripts/*.sh
   ```
-  The latter two are invoked directly (not via `bash script.sh`) by the nightly PIT mutation-testing
-  workflow, so a missing `+x` there fails that workflow specifically, not local development.
+  The latter three are invoked directly (not via `bash script.sh`) by the nightly PIT mutation-testing
+  and Pages-deploy workflows, so a missing `+x` there fails CI specifically, not local development.
 - **`docs/index.html`** ships with placeholder "The problem" / "What it does" copy — replace it with your
   library's actual pitch before enabling GitHub Pages.
 - **`README.md`**'s Usage section is a bare dependency snippet — flesh it out once the library has an API.

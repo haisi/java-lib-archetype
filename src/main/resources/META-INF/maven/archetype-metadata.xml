@@ -94,6 +94,7 @@
                 <include>docs/.nojekyll</include>
                 <include>.github/PULL_REQUEST_TEMPLATE.md</include>
                 <include>.github/dependabot.yml</include>
+                <include>.github/scripts/fetch-latest-pit-report.sh</include>
                 <include>.github/scripts/generate-mutation-badge.sh</include>
                 <include>.github/scripts/should-run-pit.sh</include>
                 <include>.github/ISSUE_TEMPLATE/feature_request.yml</include>
