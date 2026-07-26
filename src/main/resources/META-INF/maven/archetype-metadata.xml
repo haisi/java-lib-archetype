@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<archetype-descriptor xmlns="http://maven.apache.org/plugin-tools/archetype-descriptor/1.1.0"
+                       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                       xsi:schemaLocation="http://maven.apache.org/plugin-tools/archetype-descriptor/1.1.0 http://maven.apache.org/xsd/archetype-descriptor-1.1.0.xsd"
+                       name="java-lib-archetype">
+
+    <!--
+    Standard properties (groupId, artifactId, version, package) are prompted for automatically by
+    archetype:generate and don't need to be declared here. Everything below is specific to this
+    archetype - see the archetype's own README for what each one controls.
+    -->
+    <requiredProperties>
+        <requiredProperty key="libraryDescription">
+            <!-- One sentence, no default: forces the author to actually write it. -->
+        </requiredProperty>
+        <requiredProperty key="githubOwner">
+            <!-- GitHub user/org the repo will live under, e.g. "haisi". -->
+        </requiredProperty>
+        <requiredProperty key="githubRepo">
+            <defaultValue>${artifactId}</defaultValue>
+        </requiredProperty>
+        <requiredProperty key="authorName">
+            <!-- Full name, used in LICENSE and pom.xml <developers>. -->
+        </requiredProperty>
+        <requiredProperty key="authorId">
+            <defaultValue>${githubOwner}</defaultValue>
+        </requiredProperty>
+        <requiredProperty key="authorEmail">
+            <!-- Used in pom.xml <developers>, CODE_OF_CONDUCT.md and SECURITY.md contact lines. -->
+        </requiredProperty>
+        <requiredProperty key="licenseYear">
+            <!-- e.g. "2026" - the LICENSE copyright year and jreleaser.yml inceptionYear. -->
+        </requiredProperty>
+        <requiredProperty key="javaVersion">
+            <defaultValue>25</defaultValue>
+        </requiredProperty>
+        <requiredProperty key="nullMarkederVersion">
+            <!-- Latest release actually published to Maven Central; check https://central.sonatype.com/artifact/li.selman/null-markeder before bumping. -->
+            <defaultValue>1.1.0</defaultValue>
+        </requiredProperty>
+    </requiredProperties>
+
+    <fileSets>
+        <!-- Java sources: "packaged" rewrites these into src/main/java/<package-as-dirs>/... -->
+        <fileSet filtered="true" packaged="true" encoding="UTF-8">
+            <directory>src/main/java</directory>
+            <includes>
+                <include>**/*.java</include>
+            </includes>
+        </fileSet>
+        <fileSet filtered="true" packaged="true" encoding="UTF-8">
+            <directory>src/test/java</directory>
+            <includes>
+                <include>**/*.java</include>
+            </includes>
+        </fileSet>
+
+        <!-- Text files that reference project identity (name, owner, license, versions, ...). -->
+        <fileSet filtered="true" packaged="false" encoding="UTF-8">
+            <directory></directory>
+            <includes>
+                <include>pom.xml</include>
+                <include>README.md</include>
+                <include>CONTRIBUTING.md</include>
+                <include>CODE_OF_CONDUCT.md</include>
+                <include>SECURITY.md</include>
+                <include>LICENSE</include>
+                <include>jreleaser.yml</include>
+                <include>docs/index.html</include>
+                <include>.github/workflows/ci.yml</include>
+                <include>.github/workflows/pages.yml</include>
+                <include>.github/workflows/release.yml</include>
+                <include>.github/ISSUE_TEMPLATE/bug_report.yml</include>
+            </includes>
+        </fileSet>
+
+        <!--
+        Generic scaffolding: no project-identity placeholders, copied byte-for-byte. Kept unfiltered
+        so nothing in these files (e.g. shell parameter expansions like ${1} or ${var%%-*}) is
+        accidentally interpreted as a Velocity reference.
+        -->
+        <fileSet filtered="false" packaged="false" encoding="UTF-8">
+            <directory></directory>
+            <includes>
+                <include>.editorconfig</include>
+                <include>.gitignore</include>
+                <include>.mvn/jvm.config</include>
+                <include>.mvn/wrapper/maven-wrapper.properties</include>
+                <include>bumpPomVersion.sh</include>
+                <include>setPomVersions.sh</include>
+                <include>release.sh</include>
+                <include>dryrun-release.sh</include>
+                <include>docs/.nojekyll</include>
+                <include>.github/PULL_REQUEST_TEMPLATE.md</include>
+                <include>.github/dependabot.yml</include>
+                <include>.github/ISSUE_TEMPLATE/feature_request.yml</include>
+                <include>.github/ISSUE_TEMPLATE/config.yml</include>
+            </includes>
+        </fileSet>
+
+        <!-- Executable scripts: archetype:generate does not preserve the +x bit (see this archetype's README). -->
+        <fileSet filtered="false" packaged="false" encoding="UTF-8">
+            <directory></directory>
+            <includes>
+                <include>mvnw</include>
+                <include>mvnw.cmd</include>
+            </includes>
+        </fileSet>
+    </fileSets>
+</archetype-descriptor>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>li.selman</groupId>
+    <artifactId>java-lib-archetype</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>maven-archetype</packaging>
+
+    <name>java-lib-archetype</name>
+    <description>Maven archetype for a Java library set up to publish to Maven Central: Error Prone/NullAway,
+        Spotless, Checkstyle, a 100% JaCoCo coverage gate, GitHub Actions CI/release/Pages workflows,
+        JReleaser, and the usual community-health files - the reusable scaffolding behind
+        li.selman:null-markeder, extracted so a new library starts from `mvn archetype:generate` instead of
+        twenty hand-copied files.</description>
+    <url>https://github.com/haisi/java-lib-archetype</url>
+
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>haisi</id>
+            <name>Hasan Selman Kara</name>
+            <email>hasan.selman.kara@gmail.com</email>
+            <url>https://github.com/haisi</url>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git://github.com/haisi/java-lib-archetype.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/haisi/java-lib-archetype.git</developerConnection>
+        <tag>HEAD</tag>
+        <url>https://github.com/haisi/java-lib-archetype</url>
+    </scm>
+
+    <properties>
+        <maven.compiler.source>25</maven.compiler.source>
+        <maven.compiler.target>25</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <build>
+        <extensions>
+            <!-- Teaches Maven the `maven-archetype` packaging type used above. -->
+            <extension>
+                <groupId>org.apache.maven.archetype</groupId>
+                <artifactId>archetype-packaging</artifactId>
+                <version>3.4.0</version>
+            </extension>
+        </extensions>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-archetype-plugin</artifactId>
+                <version>3.4.0</version>
+            </plugin>
+        </plugins>
+    </build>
+</project>

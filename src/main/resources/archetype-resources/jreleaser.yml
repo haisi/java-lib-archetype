@@ -1,0 +1,39 @@
+project:
+  name: ${artifactId}
+  description: ${libraryDescription}
+  longDescription: |
+    ${libraryDescription}
+  links:
+    homepage: https://github.com/${githubOwner}/${githubRepo}
+  authors:
+    - ${authorName}
+  license: Apache-2.0
+  inceptionYear: "${licenseYear}"
+  languages:
+    java:
+      groupId: ${groupId}
+      version: "${javaVersion}"
+
+release:
+  github:
+    owner: ${githubOwner}
+    name: ${githubRepo}
+    overwrite: true
+    changelog:
+      formatted: ALWAYS
+      preset: conventional-commits
+
+signing:
+  active: ALWAYS
+  pgp:
+    armored: true
+
+deploy:
+  maven:
+    mavenCentral:
+      sonatype:
+        active: ALWAYS
+        url: https://central.sonatype.com/api/v1/publisher
+        stagingRepositories:
+          - target/staging-deploy
+        applyMavenCentralRules: true
