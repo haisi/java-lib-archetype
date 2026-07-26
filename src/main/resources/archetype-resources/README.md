@@ -5,6 +5,7 @@
 [![Maven Central](https://img.shields.io/maven-central/v/${groupId}/${artifactId}.svg)](https://central.sonatype.com/artifact/${groupId}/${artifactId})
 [![Javadoc](https://javadoc.io/badge2/${groupId}/${artifactId}/javadoc.svg)](https://javadoc.io/doc/${groupId}/${artifactId})
 [![License](https://img.shields.io/github/license/${githubOwner}/${githubRepo})](LICENSE)
+[![Mutation Score](https://${githubOwner}.github.io/${githubRepo}/pit/badge.svg)](https://${githubOwner}.github.io/${githubRepo}/pit/)
 
 ${libraryDescription}
 
@@ -35,6 +36,27 @@ Test coverage is enforced at 100% (line and branch) via JaCoCo; `verify` fails i
 
 `verify` also runs Spotless (palantir-java-format + sorted `pom.xml`), Checkstyle, and Error Prone/NullAway via
 the compiler plugin. Run `./mvnw spotless:apply` to auto-format before committing.
+
+## Mutation Testing
+
+[![Mutation Score](https://${githubOwner}.github.io/${githubRepo}/pit/badge.svg)](https://${githubOwner}.github.io/${githubRepo}/pit/)
+
+Line/branch coverage only proves a test executed some code, not that it would notice a bug in it. [PIT
+mutation testing](https://pitest.org) seeds small deliberate bugs ("mutants") into the compiled classes and
+checks whether the test suite actually fails for each one; a mutant that survives is a gap in the tests.
+
+Mutation testing runs nightly at around 02:00 UTC via `.github/workflows/pit-mutation-testing.yml`, and only
+when at least one new commit has landed on `main` since the last successful run - so it stays off the critical
+path for every push/PR while still picking up changes automatically. It can also be triggered manually from
+the Actions tab.
+
+See the full HTML mutation report at `https://${githubOwner}.github.io/${githubRepo}/pit/` for a per-class,
+per-mutator breakdown, or run it locally with:
+
+```shell
+./mvnw test-compile org.pitest:pitest-maven:mutationCoverage
+open target/pit-reports/index.html
+```
 
 ## Releasing
 

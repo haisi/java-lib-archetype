@@ -69,6 +69,7 @@
                 <include>docs/index.html</include>
                 <include>.github/workflows/ci.yml</include>
                 <include>.github/workflows/pages.yml</include>
+                <include>.github/workflows/pit-mutation-testing.yml</include>
                 <include>.github/workflows/release.yml</include>
                 <include>.github/ISSUE_TEMPLATE/bug_report.yml</include>
             </includes>
@@ -93,6 +94,8 @@
                 <include>docs/.nojekyll</include>
                 <include>.github/PULL_REQUEST_TEMPLATE.md</include>
                 <include>.github/dependabot.yml</include>
+                <include>.github/scripts/generate-mutation-badge.sh</include>
+                <include>.github/scripts/should-run-pit.sh</include>
                 <include>.github/ISSUE_TEMPLATE/feature_request.yml</include>
                 <include>.github/ISSUE_TEMPLATE/config.yml</include>
             </includes>

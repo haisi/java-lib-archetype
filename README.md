@@ -57,11 +57,13 @@ mvn archetype:generate \
 
 A few things `archetype:generate` can't do for you:
 
-- **Executable bits are lost.** `mvnw`, `bumpPomVersion.sh`, `setPomVersions.sh`, `release.sh` and
-  `dryrun-release.sh` come out non-executable. Run:
+- **Executable bits are lost.** `mvnw`, `bumpPomVersion.sh`, `setPomVersions.sh`, `release.sh`,
+  `dryrun-release.sh` and the two `.github/scripts/*.sh` helpers come out non-executable. Run:
   ```shell
-  chmod +x mvnw bumpPomVersion.sh setPomVersions.sh release.sh dryrun-release.sh
+  chmod +x mvnw bumpPomVersion.sh setPomVersions.sh release.sh dryrun-release.sh .github/scripts/*.sh
   ```
+  The latter two are invoked directly (not via `bash script.sh`) by the nightly PIT mutation-testing
+  workflow, so a missing `+x` there fails that workflow specifically, not local development.
 - **`docs/index.html`** ships with placeholder "The problem" / "What it does" copy — replace it with your
   library's actual pitch before enabling GitHub Pages.
 - **`README.md`**'s Usage section is a bare dependency snippet — flesh it out once the library has an API.
@@ -113,7 +115,7 @@ cd /tmp && mvn archetype:generate -DarchetypeGroupId=li.selman -DarchetypeArtifa
   -DarchetypeVersion=1.0.0-SNAPSHOT -DinteractiveMode=false -DgroupId=com.example -DartifactId=example-lib \
   -Dpackage=com.example.lib -DlibraryDescription=x -DgithubOwner=example -DauthorName=x -DauthorEmail=x@x.com \
   -DlicenseYear=2026
-cd example-lib && chmod +x mvnw *.sh && ./mvnw verify
+cd example-lib && chmod +x mvnw *.sh .github/scripts/*.sh && ./mvnw verify
 ```
 
 Template files live under `src/main/resources/archetype-resources/`; which ones get Velocity-filtered (and
