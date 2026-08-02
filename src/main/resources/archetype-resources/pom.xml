@@ -56,7 +56,7 @@
         <!-- Properties using which additional Error Prone flags can be specified. -->
         <error-prone.patch-args/>
 
-        <jspecify.version>1.0.0</jspecify.version>
+        <jspecify.version>1.0.1</jspecify.version>
         <junit.version>6.1.2</junit.version>
         <maven.compiler.release>${javaVersion}</maven.compiler.release>
         <null-markeder.version>${nullMarkederVersion}</null-markeder.version>
