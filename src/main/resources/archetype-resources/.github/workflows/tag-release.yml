@@ -13,6 +13,11 @@ jobs:
       - uses: actions/checkout@v7
         with:
           fetch-depth: 0
+          # A tag pushed with the default GITHUB_TOKEN does not trigger other workflows (GitHub
+          # blocks this to prevent infinite trigger loops), so release.yml's `on: push: tags`
+          # would never fire. Pushing with a real PAT instead makes the push indistinguishable
+          # from a human pushing it, so the trigger fires normally.
+          token: ${{ secrets.RELEASE_PAT }}
 
       - name: Set up JDK
         uses: actions/setup-java@v5

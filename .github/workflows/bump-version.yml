@@ -20,6 +20,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
+        with:
+          # Same reasoning as tag-release.yml: a push made with the default GITHUB_TOKEN doesn't
+          # trigger other workflows (e.g. CI on this push), so use a real PAT instead.
+          token: ${{ secrets.RELEASE_PAT }}
 
       - name: Set up JDK
         uses: actions/setup-java@v5
