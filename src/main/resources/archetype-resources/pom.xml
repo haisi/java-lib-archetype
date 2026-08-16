@@ -53,6 +53,7 @@
         <assertj.version>3.27.7</assertj.version>
 
         <error-prone-core.version>2.50.0</error-prone-core.version>
+        <error-prone-support.version>0.30.0</error-prone-support.version>
         <!-- Properties using which additional Error Prone flags can be specified. -->
         <error-prone.patch-args/>
 
@@ -310,6 +311,11 @@
                                 <!--
                                 Error Prone Config: https://errorprone.info/docs/flags
                                 Mainly based on: https://github.com/PicnicSupermarket/error-prone-support/blob/master/pom.xml
+                                Additional bug patterns come from error-prone-support (https://error-prone.picnic.tech/),
+                                wired in via annotationProcessorPaths below - its checks are enabled by default.
+                                (Baseline (https://github.com/palantir/baseline-error-prone) was evaluated too, but its
+                                latest release still targets error_prone_core 2.41.0 and crashes with
+                                NoClassDefFoundError against 2.50.0 - not usable here until it catches up upstream.)
                                 -->
                                 <arg>
                                     -Xplugin:ErrorProne -Xep:Var:ERROR -Xep:StringSplitter:OFF
@@ -385,6 +391,20 @@
                                     <groupId>com.uber.nullaway</groupId>
                                     <artifactId>nullaway</artifactId>
                                     <version>${nullaway.version}</version>
+                                </path>
+                                <!--
+                                Picnic's error-prone-support: additional bug patterns plus a Refaster-rule runner.
+                                See: https://error-prone.picnic.tech/
+                                -->
+                                <path>
+                                    <groupId>tech.picnic.error-prone-support</groupId>
+                                    <artifactId>error-prone-contrib</artifactId>
+                                    <version>${error-prone-support.version}</version>
+                                </path>
+                                <path>
+                                    <groupId>tech.picnic.error-prone-support</groupId>
+                                    <artifactId>refaster-runner</artifactId>
+                                    <version>${error-prone-support.version}</version>
                                 </path>
                             </annotationProcessorPaths>
                         </configuration>
