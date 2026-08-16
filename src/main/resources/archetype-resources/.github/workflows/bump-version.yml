@@ -22,8 +22,10 @@ jobs:
       - uses: actions/checkout@v7
         with:
           # Same reasoning as tag-release.yml: a push made with the default GITHUB_TOKEN doesn't
-          # trigger other workflows (e.g. CI on this push), so use a real PAT instead.
-          token: ${{ secrets.RELEASE_PAT }}
+          # trigger other workflows (e.g. CI on this push), so use a real PAT instead. Falls back
+          # to the default token (no PAT needed, but the trigger issue applies) if the RELEASE_PAT
+          # secret hasn't been set up yet, so this step never hard-fails for its absence.
+          token: ${{ secrets.RELEASE_PAT || github.token }}
 
       - name: Set up JDK
         uses: actions/setup-java@v5
