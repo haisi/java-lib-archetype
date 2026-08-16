@@ -71,6 +71,8 @@
                 <include>.github/workflows/pages.yml</include>
                 <include>.github/workflows/pit-mutation-testing.yml</include>
                 <include>.github/workflows/release.yml</include>
+                <include>.github/workflows/bump-version.yml</include>
+                <include>.github/workflows/tag-release.yml</include>
                 <include>.github/ISSUE_TEMPLATE/bug_report.yml</include>
             </includes>
         </fileSet>
