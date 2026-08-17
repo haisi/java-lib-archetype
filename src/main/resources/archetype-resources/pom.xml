@@ -57,12 +57,15 @@
         <!-- Properties using which additional Error Prone flags can be specified. -->
         <error-prone.patch-args/>
 
+        <jackson3.version>3.2.2</jackson3.version>
+        <java-snapshot-testing.version>4.2.0</java-snapshot-testing.version>
         <jspecify.version>1.0.1</jspecify.version>
         <junit.version>6.1.2</junit.version>
         <maven.compiler.release>${javaVersion}</maven.compiler.release>
         <null-markeder.version>${nullMarkederVersion}</null-markeder.version>
         <nullaway.version>0.13.8</nullaway.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <slf4j.version>2.0.17</slf4j.version>
     </properties>
 
     <dependencies>
@@ -87,6 +90,20 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <!-- Snapshot testing: https://github.com/codedabble-dev/java-snapshot-testing -->
+            <groupId>io.github.codedabble-dev</groupId>
+            <artifactId>java-snapshot-testing-junit5</artifactId>
+            <version>${java-snapshot-testing.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <!-- JSON serializer plugin for java-snapshot-testing, backed by Jackson 3. -->
+            <groupId>io.github.codedabble-dev</groupId>
+            <artifactId>java-snapshot-testing-plugin-jackson3</artifactId>
+            <version>${java-snapshot-testing.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <!-- Generates/fixes package-info.java files; ArchitectureTest calls it to self-heal. -->
             <groupId>li.selman</groupId>
             <artifactId>null-markeder</artifactId>
@@ -103,6 +120,25 @@
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
             <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <!-- SLF4J binding required by java-snapshot-testing at test runtime. -->
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>${slf4j.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>tools.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson3.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>tools.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson3.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>

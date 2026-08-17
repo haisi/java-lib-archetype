@@ -55,6 +55,14 @@
             </includes>
         </fileSet>
 
+        <!-- References ${package} to point at the generated NullInclusiveSnapshotSerializer. -->
+        <fileSet filtered="true" packaged="false" encoding="UTF-8">
+            <directory>src/test/resources</directory>
+            <includes>
+                <include>snapshot.properties</include>
+            </includes>
+        </fileSet>
+
         <!-- Text files that reference project identity (name, owner, license, versions, ...). -->
         <fileSet filtered="true" packaged="false" encoding="UTF-8">
             <directory></directory>
