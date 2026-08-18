@@ -7,6 +7,17 @@
 [![License](https://img.shields.io/github/license/${githubOwner}/${githubRepo})](LICENSE)
 [![Mutation Score](https://${githubOwner}.github.io/${githubRepo}/pit/badge.svg)](https://${githubOwner}.github.io/${githubRepo}/pit/)
 
+[![Quality gate status](https://sonarcloud.io/api/project_badges/measure?project=${githubOwner}_${githubRepo}&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=${githubOwner}_${githubRepo})
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=${githubOwner}_${githubRepo}&metric=bugs)](https://sonarcloud.io/summary/new_code?id=${githubOwner}_${githubRepo})
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=${githubOwner}_${githubRepo}&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=${githubOwner}_${githubRepo})
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=${githubOwner}_${githubRepo}&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=${githubOwner}_${githubRepo})
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=${githubOwner}_${githubRepo}&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=${githubOwner}_${githubRepo})
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=${githubOwner}_${githubRepo}&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=${githubOwner}_${githubRepo})
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=${githubOwner}_${githubRepo}&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=${githubOwner}_${githubRepo})
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=${githubOwner}_${githubRepo}&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=${githubOwner}_${githubRepo})
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=${githubOwner}_${githubRepo}&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=${githubOwner}_${githubRepo})
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=${githubOwner}_${githubRepo}&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=${githubOwner}_${githubRepo})
+
 ${libraryDescription}
 
 [**Website**](https://${githubOwner}.github.io/${githubRepo}/)

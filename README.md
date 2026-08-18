@@ -3,6 +3,17 @@
 [![CI](https://github.com/haisi/java-lib-archetype/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/haisi/java-lib-archetype/actions/workflows/ci.yml)
 [![Maven Central](https://img.shields.io/maven-central/v/li.selman/java-lib-archetype.svg)](https://central.sonatype.com/artifact/li.selman/java-lib-archetype)
 
+[![Quality gate status](https://sonarcloud.io/api/project_badges/measure?project=haisi_java-lib-archetype&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=haisi_java-lib-archetype)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=haisi_java-lib-archetype&metric=bugs)](https://sonarcloud.io/summary/new_code?id=haisi_java-lib-archetype)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=haisi_java-lib-archetype&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=haisi_java-lib-archetype)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=haisi_java-lib-archetype&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=haisi_java-lib-archetype)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=haisi_java-lib-archetype&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=haisi_java-lib-archetype)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=haisi_java-lib-archetype&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=haisi_java-lib-archetype)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=haisi_java-lib-archetype&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=haisi_java-lib-archetype)
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=haisi_java-lib-archetype&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=haisi_java-lib-archetype)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=haisi_java-lib-archetype&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=haisi_java-lib-archetype)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=haisi_java-lib-archetype&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=haisi_java-lib-archetype)
+
 A Maven archetype that scaffolds a Java library set up to publish to Maven Central: Error Prone/NullAway,
 Spotless (palantir-java-format), Checkstyle, a 100% JaCoCo coverage gate, GitHub Actions CI/release/Pages
 workflows, JReleaser, and the usual community-health files (CONTRIBUTING, CODE_OF_CONDUCT, SECURITY, issue/PR
