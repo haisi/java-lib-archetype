@@ -15,7 +15,7 @@
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=haisi_java-lib-archetype&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=haisi_java-lib-archetype)
 
 A Maven archetype that scaffolds a Java library set up to publish to Maven Central: Error Prone/NullAway,
-Spotless (palantir-java-format), Checkstyle, a 100% JaCoCo coverage gate, GitHub Actions CI/release/Pages
+Spotless (palantir-java-format), a 100% JaCoCo coverage gate, GitHub Actions CI/release/Pages
 workflows, JReleaser, and the usual community-health files (CONTRIBUTING, CODE_OF_CONDUCT, SECURITY, issue/PR
 templates). It's the reusable scaffolding extracted from
 [`li.selman:null-markeder`](https://github.com/haisi/null-markeder) — see that repo's write-up for the
@@ -122,7 +122,7 @@ main/test split, it wrongly excludes every class (main included) and `Architectu
 package does not contain any sub package '<package>'` — a false negative specific to this nested-IT layout, not
 a real bug. Confirmed by copying a generated project outside any `test-classes`-named path and running
 `mvn verify` there directly, where it passes cleanly. If you need to verify the full `verify` lifecycle
-(Checkstyle/Spotless/JaCoCo included) after a template change, generate into `/tmp` or similar rather than
+(Spotless/JaCoCo included) after a template change, generate into `/tmp` or similar rather than
 trusting the IT for that part:
 
 ```shell

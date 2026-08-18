@@ -3,7 +3,7 @@ project:
   description: Maven archetype for a Java library set up to publish to Maven Central
   longDescription: |
     java-lib-archetype scaffolds a Java library set up to publish to Maven Central: Error Prone/NullAway,
-    Spotless, Checkstyle, a 100% JaCoCo coverage gate, GitHub Actions CI/release/Pages workflows, JReleaser,
+    Spotless, a 100% JaCoCo coverage gate, GitHub Actions CI/release/Pages workflows, JReleaser,
     and the usual community-health files - the reusable scaffolding behind li.selman:null-markeder.
   links:
     homepage: https://github.com/haisi/java-lib-archetype

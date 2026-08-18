@@ -9,7 +9,7 @@
 
     <name>java-lib-archetype</name>
     <description>Maven archetype for a Java library set up to publish to Maven Central: Error Prone/NullAway,
-        Spotless, Checkstyle, a 100% JaCoCo coverage gate, GitHub Actions CI/release/Pages workflows,
+        Spotless, a 100% JaCoCo coverage gate, GitHub Actions CI/release/Pages workflows,
         JReleaser, and the usual community-health files - the reusable scaffolding behind
         li.selman:null-markeder, extracted so a new library starts from `mvn archetype:generate` instead of
         twenty hand-copied files.</description>

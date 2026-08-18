@@ -57,6 +57,7 @@
         <!-- Properties using which additional Error Prone flags can be specified. -->
         <error-prone.patch-args/>
 
+        <haisi-error-prone-bugpatterns.version>0.1.1</haisi-error-prone-bugpatterns.version>
         <jackson3.version>3.2.2</jackson3.version>
         <java-snapshot-testing.version>4.2.0</java-snapshot-testing.version>
         <jspecify.version>1.0.1</jspecify.version>
@@ -267,60 +268,6 @@
                     </plugin>
 
                     <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-checkstyle-plugin</artifactId>
-                        <version>3.6.0</version>
-                        <configuration>
-                            <checkstyleRules>
-                                <module name="Checker">
-                                    <!-- Flags plain http:// URLs (should be https://) in every scanned file. -->
-                                    <module name="io.spring.nohttp.checkstyle.check.NoHttpCheck"/>
-                                    <!-- We only enable rules that are not enforced by
-                                    Error Prone or automatically corrected through
-                                    application of google-java-format (GJF). -->
-                                    <module name="TreeWalker">
-                                        <module name="IllegalImport">
-                                            <!-- illegalClasses takes a single comma-separated list; with regexp=true
-                                            each entry is matched as a regular expression against the import. -->
-                                            <property name="regexp" value="true"/>
-                                            <property name="illegalClasses" value="                                                 org\.jetbrains\.annotations\.CheckReturnValue,                                                 org\.jetbrains\.annotations\.VisibleForTesting,                                                 io\.micrometer\.core\.lang\.Nullable,                                                 javax\.annotation\.Nullable,                                                 org\.springframework\.lang\.Nullable,                                                 org\.testng\.AssertJUnit(\..*?)?"/>
-                                            <!-- Instead, please use, respectively:
-                                            `com.google.errorprone.annotations.CheckReturnValue`,
-                                            `com.google.common.annotations.VisibleForTesting`,
-                                            `org.jspecify.annotations.Nullable` (x3),
-                                            `org.assertj.core.api.Assertions`. -->
-                                        </module>
-                                    </module>
-                                </module>
-                            </checkstyleRules>
-                            <excludeGeneratedSources>true</excludeGeneratedSources>
-                            <failOnViolation>true</failOnViolation>
-                            <includeTestSourceDirectory>true</includeTestSourceDirectory>
-                            <resourceIncludes>**/*</resourceIncludes>
-                        </configuration>
-                        <dependencies>
-                            <dependency>
-                                <groupId>com.puppycrawl.tools</groupId>
-                                <artifactId>checkstyle</artifactId>
-                                <version>13.9.0</version>
-                            </dependency>
-                            <dependency>
-                                <groupId>io.spring.nohttp</groupId>
-                                <artifactId>nohttp-checkstyle</artifactId>
-                                <version>0.0.11</version>
-                            </dependency>
-                        </dependencies>
-                        <executions>
-                            <execution>
-                                <id>run-checkstyle</id>
-                                <goals>
-                                    <goal>check</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-
-                    <plugin>
                         <!--
                         Only declared here (not in the base build): with this profile inactive
                         (-Dquick), Maven still compiles via its default lifecycle binding, using
@@ -380,6 +327,14 @@
                                     <!-- Yoda conditions are not always more readable than the alternative. -->
                                     -Xep:YodaCondition:OFF
                                     -XepOpt:CheckReturnValue:CheckAllConstructors=true
+                                    <!--
+                                    Forbids specific classes/annotations by resolved symbol, replacing
+                                    Checkstyle's former IllegalImport rule. See:
+                                    https://github.com/haisi/error-prone-support
+                                    -->
+                                    -Xep:ForbiddenApi:ERROR
+                                    -XepOpt:ForbiddenApi:Bundles=jdk-system-out,jdk-default-charset,jdk-internals,non-jspecify-nullable
+                                    -XepOpt:ForbiddenApi:Signatures=${project.basedir}/config/forbidden-apis.txt
                                     <!-- Append additional custom arguments. -->
                                     ${error-prone.patch-args}
                                 </arg>
@@ -441,6 +396,15 @@
                                     <groupId>tech.picnic.error-prone-support</groupId>
                                     <artifactId>refaster-runner</artifactId>
                                     <version>${error-prone-support.version}</version>
+                                </path>
+                                <!--
+                                ForbiddenApi checker: signature-based bans on classes/annotations, matched
+                                against resolved symbols. See: https://github.com/haisi/error-prone-support
+                                -->
+                                <path>
+                                    <groupId>li.selman.error-prone</groupId>
+                                    <artifactId>bugpatterns</artifactId>
+                                    <version>${haisi-error-prone-bugpatterns.version}</version>
                                 </path>
                             </annotationProcessorPaths>
                         </configuration>

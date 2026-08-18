@@ -1,0 +1,7 @@
+# Project-specific bans not covered by any built-in bundle (see the ForbiddenApi:Bundles= flag on
+# maven-compiler-plugin for jSpecify-only nullability annotations). Signature syntax:
+# https://github.com/haisi/error-prone-support#signature-syntax
+
+org.jetbrains.annotations.CheckReturnValue @ Use com.google.errorprone.annotations.CheckReturnValue instead
+org.jetbrains.annotations.VisibleForTesting @ Use com.google.common.annotations.VisibleForTesting instead
+org.testng.AssertJUnit @ Use org.assertj.core.api.Assertions instead

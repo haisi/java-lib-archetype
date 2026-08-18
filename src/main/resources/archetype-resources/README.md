@@ -46,8 +46,8 @@ Add dependency
 Test coverage is enforced at 100% (line and branch) via JaCoCo; `verify` fails if it drops below that. Run
 `open target/site/jacoco/index.html` after a build to see the report.
 
-`verify` also runs Spotless (palantir-java-format + sorted `pom.xml`), Checkstyle, and Error Prone/NullAway via
-the compiler plugin. Run `./mvnw spotless:apply` to auto-format before committing.
+`verify` also runs Spotless (palantir-java-format + sorted `pom.xml`) and Error Prone/NullAway via the compiler
+plugin. Run `./mvnw spotless:apply` to auto-format before committing.
 
 ## Mutation Testing
 

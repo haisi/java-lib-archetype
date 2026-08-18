@@ -109,6 +109,7 @@
                 <include>.github/scripts/should-run-pit.sh</include>
                 <include>.github/ISSUE_TEMPLATE/feature_request.yml</include>
                 <include>.github/ISSUE_TEMPLATE/config.yml</include>
+                <include>config/forbidden-apis.txt</include>
             </includes>
         </fileSet>
 

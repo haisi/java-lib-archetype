@@ -16,7 +16,7 @@ short description of the use case for feature requests.
    ```
 3. Keep the change focused. If you're proposing something larger (a new public API, a new dependency), open
    an issue first to discuss the approach before writing code.
-4. Formatting, Checkstyle, Error Prone/NullAway, and 100% test coverage are all enforced by `verify` — run
+4. Formatting, Error Prone/NullAway, and 100% test coverage are all enforced by `verify` — run
    `./mvnw spotless:apply` to auto-format code and `pom.xml` before committing.
 5. Open a pull request against `main` describing the change and why it's needed. CI (`.github/workflows/ci.yml`)
    runs the build and test suite on every PR.
